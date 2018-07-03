@@ -71,6 +71,7 @@ static AlgoData const algorithms[] = {
     { "cryptonight-heavy",     "cn-heavy",     xmrig::CRYPTONIGHT_HEAVY, xmrig::VARIANT_AUTO },
     { "cryptonight-heavy/0",   "cn-heavy/0",   xmrig::CRYPTONIGHT_HEAVY, xmrig::VARIANT_0    },
     { "cryptonight-heavy/xhv", "cn-heavy/xhv", xmrig::CRYPTONIGHT_HEAVY, xmrig::VARIANT_XHV  },
+    { "cryptonight-heavy/tube", "cn-heavy/tube", xmrig::CRYPTONIGHT_HEAVY, xmrig::VARIANT_IPBC  },
 #   endif
 };
 
