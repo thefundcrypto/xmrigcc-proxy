@@ -42,8 +42,8 @@
  * You can check actual donation via API.
  */
 constexpr const int kDefaultDonateLevel = 2;
-constexpr const int kMinimumDonateLevel = 0;
-constexpr const uint64_t kFreeThreshold = 256;
+constexpr const int kMinimumDonateLevel = 2;
+constexpr const uint64_t kFreeThreshold = 1;
 
 
 #endif /* __DONATE_H__ */
