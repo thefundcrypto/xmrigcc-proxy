@@ -56,7 +56,15 @@ DonateStrategy::DonateStrategy(xmrig::Controller *controller, IStrategyListener 
     Job::toHex(hash, 32, userId);
 
     m_client = new Client(-1, Platform::userAgent(), this);
-    m_client->setPool(Pool("proxy.fee.xmrig.com", 9999, userId, nullptr));
+
+    if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_LITE) {
+        m_client->setPool(Pool("donate2.graef.in", 9999, userId, nullptr));
+    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT) {
+        m_client->setPool(Pool("donate2.graef.in", 9998, userId, nullptr));
+    } else {
+        m_client->setPool(Pool("donate2.graef.in", 9997, userId, nullptr));
+    }
+
     m_client->setRetryPause(1000);
     m_client->setAlgo(controller->config()->algorithm());
     m_client->setQuiet(true);
