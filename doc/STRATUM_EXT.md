@@ -89,6 +89,7 @@ Both miner and pool should support short algorithm name aliases:
 | `cryptonight`            | `cn`            | `cn`           | `-1`        | Autodetect works only for Monero.                    |
 | `cryptonight/0`          | `cn/0`          | `cn`           | `0`         | Original/old CryptoNight.                            |
 | `cryptonight/1`          | `cn/1`          | `cn`           | `1`         | Also known as `monero7` and `CryptoNightV7`.         |
+| `cryptonight/2`          | `cn/2`          | `cn`           | `2`         | CryptoNight variant 2.                               |
 | `cryptonight/xtl`        | `cn/xtl`        | `cn`           | `"xtl"`     | Stellite (XTL).                                      |
 | `cryptonight/msr`        | `cn/msr`        | `cn`           | `"msr"`     | Masari (MSR), also known as `cryptonight-fast`       |
 | `cryptonight/xao`        | `cn/xao`        | `cn`           | `"xao"`     | Alloy (XAO)                                          |
@@ -100,6 +101,8 @@ Both miner and pool should support short algorithm name aliases:
 | `cryptonight-heavy`      | `cn-heavy`      | `cn-heavy`     | `0`         | Ryo and Loki                                         |
 | `cryptonight-heavy/xhv`  | `cn-heavy/xhv`  | `cn-heavy`     | `"xhv"`     | Haven Protocol                                       |
 | `cryptonight-heavy/tube` | `cn-heavy/tube` | `cn-heavy`     | `"tube"`    | BitTube (TUBE)                                       |
+
+Proper pool/proxy implementation should avoid any automatic/autodetect variants, variant must explicitly specified.
 
 ### 1.5 XMR-Stak algorithm names
 Mapping between XMR-Stak algorithm names and XMRig names.
@@ -115,8 +118,8 @@ Mapping between XMR-Stak algorithm names and XMRig names.
 | `cryptonight-aeonv7`      | `cn-lite/1`      |
 | `cryptonight_lite_v7`     | `cn-lite/1`      |
 | `cryptonight_lite_v7_xor` | `cn-lite/ipbc`   |
-| `cryptonight_heavy`       | `ch-heavy`       |
-| `cryptonight_haven`       | `ch-heavy/xhv`   |
+| `cryptonight_heavy`       | `cn-heavy`       |
+| `cryptonight_haven`       | `cn-heavy/xhv`   |
 
 ## Rig identifier
 User defined rig identifier. Optional field `rigid` in `login` request. More details: https://github.com/fireice-uk/xmr-stak/issues/849
