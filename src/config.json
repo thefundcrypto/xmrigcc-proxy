@@ -29,7 +29,7 @@
     "mode": "nicehash",
     "pools": [
         {
-            "url": "donate.v2.xmrig.com:5555",
+            "url": "donate.graef.in:9998",
             "user": "YOUR_WALLET",
             "pass": "x",
             "rig-id": null,
