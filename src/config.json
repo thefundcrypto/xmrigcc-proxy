@@ -34,7 +34,7 @@
             "pass": "x",
             "rig-id": null,
             "keepalive": false,
-            "variant": -1,
+            "variant": "auto",
             "tls": false,
             "tls-fingerprint": null
         }
