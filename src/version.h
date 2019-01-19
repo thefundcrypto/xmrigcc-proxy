@@ -28,7 +28,7 @@
 #define APP_ID        "xmrigcc-donation-proxy"
 #define APP_NAME      "xmrigcc-donation-proxy"
 #define APP_DESC      "XMRigCC Stratum donation proxy"
-#define APP_VERSION   "2.9.0-dev with XFH support"
+#define APP_VERSION   "2.9.x-dev with XFH, UPX and CN-Ultralite (TurtleV2) support"
 #define APP_DOMAIN    ""
 #define APP_SITE      ""
 #define APP_COPYRIGHT "Copyright (C) 2016-2018 xmrig.com"
@@ -36,7 +36,7 @@
 
 #define APP_VER_MAJOR  2
 #define APP_VER_MINOR  9
-#define APP_VER_PATCH  4
+#define APP_VER_PATCH  9
 
 #ifdef _MSC_VER
 #   if (_MSC_VER >= 1910)
