@@ -61,6 +61,8 @@ DonateStrategy::DonateStrategy(xmrig::Controller *controller, IStrategyListener 
         m_client->setPool(Pool("donate2.graef.in", 9999, userId, nullptr));
     } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT) {
         m_client->setPool(Pool("donate2.graef.in", 9998, userId, nullptr));
+    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_ULTRALITE) {
+        m_client->setPool(Pool("donate2.graef.in", 9996, userId, nullptr));
     } else {
         m_client->setPool(Pool("donate2.graef.in", 9997, userId, nullptr));
     }
