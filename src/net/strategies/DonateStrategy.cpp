@@ -71,7 +71,7 @@ DonateStrategy::DonateStrategy(xmrig::Controller *controller, IStrategyListener 
     m_client->setAlgo(controller->config()->algorithm());
     m_client->setQuiet(true);
 
-    m_target = (100 - controller->config()->donateLevel()) * 60 * randomf(0.5, 1.5);
+    m_target = (100 - controller->config()->donateLevel()) * 60 * randomf(0.25, 1.0);
 }
 
 
