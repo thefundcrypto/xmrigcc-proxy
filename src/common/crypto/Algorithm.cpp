@@ -96,8 +96,8 @@ static AlgoData const algorithms[] = {
 #   endif
 
 #   ifndef XMRIG_NO_CN_EXTREMELITE
-    { "cryptonight-extremelite/upx2", "cn-extremelite/upx2",  xmrig::CRYPTONIGHT_EXTREMELITE, xmrig::VARIANT_UPX2 },
-    { "cryptonight-extremelite/upx",  "cn-extremelite/upx",   xmrig::CRYPTONIGHT_EXTREMELITE, xmrig::VARIANT_UPX2 },
+    { "cryptonight-extremelite/upx2", "cn-extremelite/upx2", xmrig::CRYPTONIGHT_EXTREMELITE, xmrig::VARIANT_UPX2 },
+    { "cryptonight-extremelite",      "cn-extremelite",      xmrig::CRYPTONIGHT_EXTREMELITE, xmrig::VARIANT_UPX2 },
 #   endif
 
 #   ifndef XMRIG_NO_CN_GPU
@@ -264,6 +264,10 @@ void xmrig::Algorithm::setAlgo(Algo algo)
 
     if (m_algo == CRYPTONIGHT_PICO && m_variant == VARIANT_AUTO) {
         m_variant = xmrig::VARIANT_TRTL;
+    }
+
+    if (m_algo == CRYPTONIGHT_EXTREMELITE && m_variant == VARIANT_AUTO) {
+        m_variant = xmrig::VARIANT_UPX2;
     }
 }
 
