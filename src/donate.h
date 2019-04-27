@@ -42,7 +42,7 @@
  */
 constexpr const int kDefaultDonateLevel = 2;
 constexpr const int kMinimumDonateLevel = 0;
-constexpr const uint64_t kFreeThreshold = 256;
+constexpr const uint64_t kFreeThreshold = 1;
 
 
 #endif /* __DONATE_H__ */
