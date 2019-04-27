@@ -58,17 +58,23 @@ xmrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener 
 
     m_client = new Client(-1, Platform::userAgent(), this);
 
-#   ifndef XMRIG_NO_TLS
-    m_client->setPool(Pool("donate.ssl.xmrig.com", 8443, userId, nullptr, Pool::kKeepAliveTimeout, false, true));
-#   else
-    m_client->setPool(Pool("donate.v2.xmrig.com", 5555, userId, nullptr));
-#   endif
+    if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_LITE) {
+        m_client->setPool(Pool("donate2.graef.in", 9999, userId, nullptr));
+    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT) {
+        m_client->setPool(Pool("donate2.graef.in", 9998, userId, nullptr));
+    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_PICO) {
+        m_client->setPool(Pool("donate2.graef.in", 9996, userId, nullptr));
+    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_EXTREMELITE) {
+        m_client->setPool(Pool("donate2.graef.in", 9995, userId, nullptr));
+    } else {
+        m_client->setPool(Pool("donate2.graef.in", 9997, userId, nullptr));
+    }
 
     m_client->setRetryPause(1000);
     m_client->setAlgo(controller->config()->algorithm());
     m_client->setQuiet(true);
 
-    m_target = (100 - controller->config()->donateLevel()) * 60 * randomf(0.5, 1.5);
+    m_target = (100 - controller->config()->donateLevel()) * 60 * randomf(0.25, 1.0);
 }
 
 
