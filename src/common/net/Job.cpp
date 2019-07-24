@@ -264,6 +264,12 @@ xmrig::Variant xmrig::Job::variant() const
     case CRYPTONIGHT_HEAVY:
         return VARIANT_0;
 
+    case ALGO_ARGON2_256:
+        return VARIANT_ARGON2_WRKZ;
+
+    case ALGO_ARGON2_512:
+        return VARIANT_ARGON2_CHUKWA;
+
     default:
         break;
     }
