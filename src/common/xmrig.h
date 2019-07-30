@@ -37,8 +37,8 @@ enum Algo {
     CRYPTONIGHT_HEAVY,  /* CryptoNight (4 MB) */
     CRYPTONIGHT_PICO,   /* CryptoNight (256 KB) */
     CRYPTONIGHT_EXTREMELITE,   /* CryptoNight (128 KB) */
-    ALGO_ARGON2_256, /* Argon2 (256KB ScratchPad) */
-    ALGO_ARGON2_512, /* Argon2 (512KB ScratchPad) */
+    ARGON2_256, /* Argon2 (256KB ScratchPad) */
+    ARGON2_512, /* Argon2 (512KB ScratchPad) */
     ALGO_MAX
 };
 
@@ -84,8 +84,9 @@ enum Variant {
     VARIANT_DOUBLE = 16, // CryptoNight variant 2 with double iterations (X-CASH)
     VARIANT_UPX    = 17,  // CryptoNight variant upx
     VARIANT_UPX2   = 18,  // CryptoNight variant upx
-    VARIANT_ARGON2_CHUKWA = 19,
-    VARIANT_ARGON2_WRKZ = 20,
+    VARIANT_CONCEAL = 19,  // CryptoNight variant upx
+    VARIANT_ARGON2_CHUKWA = 20,
+    VARIANT_ARGON2_WRKZ = 21,
     VARIANT_MAX
 };
 

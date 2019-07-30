@@ -1,3 +1,8 @@
+# v2.14.1-2
+- Support for UPX & UPX2
+- Support for CN-Conceal 
+- Support for Argon2-256/512 (Wrkz/Trtl-Chukwa)
+
 # v2.14.1
 - [#306](https://github.com/xmrig/xmrig-proxy/issues/306) [#310](https://github.com/xmrig/xmrig-proxy/issues/310) Fixed compile issues and random crashing if verbose mode or access log was enabled.
 
