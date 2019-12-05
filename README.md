@@ -1,10 +1,10 @@
 # XMRig Proxy
-[![Github All Releases](https://img.shields.io/github/downloads/xmrig/xmrig-proxy/total.svg)](https://github.com/xmrig/xmrig-proxy/releases)
-[![GitHub release](https://img.shields.io/github/release/xmrig/xmrig-proxy/all.svg)](https://github.com/xmrig/xmrig-proxy/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date-pre/xmrig/xmrig-proxy.svg)](https://github.com/xmrig/xmrig-proxy/releases)
-[![GitHub license](https://img.shields.io/github/license/xmrig/xmrig-proxy.svg)](https://github.com/xmrig/xmrig-proxy/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/xmrig/xmrig-proxy.svg)](https://github.com/xmrig/xmrig-proxy/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/xmrig/xmrig-proxy.svg)](https://github.com/xmrig/xmrig-proxy/network)
+[![Github All Releases](https://img.shields.io/github/downloads/bendr0id/xmrigcc-donation-proxy/total.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/releases)
+[![GitHub release](https://img.shields.io/github/release/bendr0id/xmrigcc-donation-proxy/all.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date-pre/bendr0id/xmrigcc-donation-proxy.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/releases)
+[![GitHub license](https://img.shields.io/github/license/bendr0id/xmrigcc-donation-proxy.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/bendr0id/xmrigcc-donation-proxy.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/bendr0id/xmrigcc-donation-proxy.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/network)
 
 Extremely high performance Monero (XMR) Stratum protocol proxy, can easily handle over 100K connections on cheap $5 (1024 MB) virtual machine. Reduce number of pool connections up to 256 times, 100K workers become just 391 worker on pool side. Written on C++/libuv same as [XMRig](https://github.com/xmrig/xmrig) miner.
 
@@ -12,16 +12,16 @@ Extremely high performance Monero (XMR) Stratum protocol proxy, can easily handl
 :warning: :warning: :warning: **Nicehash support must be enabled on miner side, it mandatory.** :warning: :warning: :warning:
 
 * Compatible with any Monero, Electroneum, Sumokoin and AEON pools, except **nicehash.com**.
-* Any miner with nicehash support, `--nicehash` option for [XMRig](https://github.com/xmrig/xmrig), `"nicehash_nonce": true,` for xmr-stak-cpu.
+* Any miner with nicehash support, `--nicehash` option for [XMRig(CC)](https://github.com/bendr0id/xmrigCC), `"nicehash_nonce": true,` for xmr-stak-cpu.
 * [Comparison](https://github.com/xmrig/xmrig-proxy/wiki/Comparison) with other proxies.
 
 ## Why?
 This proxy designed and created for handle donation traffic from XMRig. No one other solution works fine with high connection/disconnection rate.
 
 ## Download
-* Binary releases: https://github.com/xmrig/xmrig-proxy/releases
-* Git tree: https://github.com/xmrig/xmrig-proxy.git
-  * Clone with `git clone https://github.com/xmrig/xmrig-proxy.git` :hammer: [Build instructions](https://github.com/xmrig/xmrig-proxy/wiki/Build).
+* Binary releases: https://github.com/bendr0id/xmrigcc-donation-proxy/releases
+* Git tree: https://github.com/bendr0id/xmrigcc-donation-proxy.git
+  * Clone with `git clone https://github.com/bendr0id/xmrigcc-donation-proxy.git` :hammer: [Build instructions](https://github.com/xmrig/xmrig-proxy/wiki/Build).
   
 ## Usage
 :boom: If you use Linux and want handle more than **1000 connections**, you need [increase limits of open files](https://github.com/xmrig/xmrig-proxy/wiki/Ubuntu-setup).
