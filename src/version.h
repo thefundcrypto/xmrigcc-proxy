@@ -28,18 +28,20 @@
 #define APP_ID        "xmrigcc-donation-proxy"
 #define APP_NAME      "xmrigcc-donation-proxy"
 #define APP_DESC      "XMRigCC Stratum donation proxy"
-#define APP_VERSION   "2.14.1-2-xmrigcc proxy with UPX/UPX2, Conceal and Argon2 (chukwa/wrkz) support"
+#define APP_VERSION   "5.0.1 with UPX and Conceal support"
 #define APP_DOMAIN    ""
 #define APP_SITE      ""
 #define APP_COPYRIGHT "Copyright (C) 2016-2019 xmrig.com"
 #define APP_KIND      "proxy"
 
-#define APP_VER_MAJOR  2
-#define APP_VER_MINOR  14
-#define APP_VER_PATCH  2
+#define APP_VER_MAJOR  5
+#define APP_VER_MINOR  0
+#define APP_VER_PATCH  1
 
 #ifdef _MSC_VER
-#   if (_MSC_VER >= 1910)
+#   if (_MSC_VER >= 1920)
+#       define MSVC_VERSION 2019
+#   elif (_MSC_VER >= 1910 && _MSC_VER < 1920)
 #       define MSVC_VERSION 2017
 #   elif _MSC_VER == 1900
 #       define MSVC_VERSION 2015

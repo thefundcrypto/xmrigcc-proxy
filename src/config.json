@@ -1,12 +1,16 @@
 {
     "access-log-file": null,
-    "algo": "cryptonight",
+    "access-password": null,
+    "algo-ext": true,
     "api": {
+        "id": null,
+        "worker-id": null
+    },
+    "http": {
+        "enabled": false,
+        "host": "127.0.0.1",
         "port": 0,
         "access-token": null,
-        "id": null,
-        "worker-id": null,
-        "ipv6": false,
         "restricted": true
     },
     "background": false,
@@ -29,14 +33,17 @@
     "mode": "nicehash",
     "pools": [
         {
-            "url": "donate.graef.in:9998",
+            "algo": null,
+            "coin": null,
+            "url": "donate.graef.in:80",
             "user": "YOUR_WALLET",
             "pass": "x",
             "rig-id": null,
             "keepalive": false,
-            "variant": "auto",
+            "enabled": true,
             "tls": false,
-            "tls-fingerprint": null
+            "tls-fingerprint": null,
+            "daemon": false
         }
     ],
     "retries": 2,
@@ -51,6 +58,7 @@
         "dhparam": null
     },
     "user-agent": null,
+    "syslog": false,
     "verbose": false,
     "watch": true,
     "workers": true

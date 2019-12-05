@@ -23,22 +23,27 @@
  */
 
 
-#include "common/crypto/keccak.h"
-#include "common/interfaces/IStrategyListener.h"
-#include "common/net/Client.h"
-#include "common/Platform.h"
-#include "common/xmrig.h"
-#include "core/Config.h"
+#include "base/kernel/interfaces/IStrategyListener.h"
+#include "base/kernel/Platform.h"
+#include "base/net/stratum/Client.h"
+#include "base/tools/Buffer.h"
+#include "core/config/Config.h"
 #include "core/Controller.h"
+#include "crypto/common/keccak.h"
 #include "donate.h"
 #include "net/strategies/DonateStrategy.h"
 #include "proxy/Counters.h"
 #include "proxy/StatsData.h"
+#include "rapidjson/document.h"
 
 
-static inline float randomf(float min, float max) {
-    return (max - min) * ((((float) rand()) / (float) RAND_MAX)) + min;
-}
+namespace xmrig {
+
+
+static inline double randomf(double min, double max)    { return (max - min) * (((static_cast<double>(rand())) / static_cast<double>(RAND_MAX))) + min; }
+
+
+} // namespace xmrig
 
 
 xmrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener *listener) :
@@ -53,32 +58,21 @@ xmrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener 
     char userId[65] = { 0 };
     const char *user = controller->config()->pools().data().front().user();
 
-    xmrig::keccak(reinterpret_cast<const uint8_t *>(user), strlen(user), hash);
-    Job::toHex(hash, 32, userId);
+    keccak(reinterpret_cast<const uint8_t *>(user), strlen(user), hash);
+    Buffer::toHex(hash, 32, userId);
 
     m_client = new Client(-1, Platform::userAgent(), this);
 
-    if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_LITE) {
-        m_client->setPool(Pool("donate2.graef.in", 9999, userId, nullptr));
-    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT) {
-        m_client->setPool(Pool("donate2.graef.in", 9998, userId, nullptr));
-    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_PICO) {
-        m_client->setPool(Pool("donate2.graef.in", 9996, userId, nullptr));
-    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT_EXTREMELITE) {
-        m_client->setPool(Pool("donate2.graef.in", 9995, userId, nullptr));
-    } else if (controller->config()->algorithm().algo() == xmrig::Algo::CRYPTONIGHT) {
-        m_client->setPool(Pool("donate2.graef.in", 9997, userId, nullptr));
-    } else if (controller->config()->algorithm().algo() == xmrig::Algo::ARGON2_256) {
-        m_client->setPool(Pool("donate2.graef.in", 9994, userId, nullptr));
-    } else if (controller->config()->algorithm().algo() == xmrig::Algo::ARGON2_512) {
-        m_client->setPool(Pool("donate2.graef.in", 9993, userId, nullptr));
-    }
+#   ifdef XMRIG_FEATURE_TLS
+    m_client->setPool(Pool("donate.graef.in", 443, userId, nullptr, Pool::kKeepAliveTimeout, false, true));
+#   else
+    m_client->setPool(Pool("donate.graef.in", 80, userId, nullptr));
+#   endif
 
-    m_client->setRetryPause(1000);
-    m_client->setAlgo(controller->config()->algorithm());
+    m_client->setRetryPause(5000);
     m_client->setQuiet(true);
 
-    m_target = (100 - controller->config()->donateLevel()) * 60 * randomf(0.25, 1.0);
+    m_target = (100 - controller->config()->pools().donateLevel()) * 60 * randomf(0.25, 0.75);
 }
 
 
@@ -90,7 +84,7 @@ xmrig::DonateStrategy::~DonateStrategy()
 
 bool xmrig::DonateStrategy::reschedule()
 {
-    const uint64_t level = m_controller->config()->donateLevel() * 60;
+    const uint64_t level = m_controller->config()->pools().donateLevel() * 60;
     if (m_donateTicks < level) {
         return false;
     }
@@ -103,11 +97,11 @@ bool xmrig::DonateStrategy::reschedule()
 }
 
 
-void xmrig::DonateStrategy::save(const Client *client, const Job &job)
+void xmrig::DonateStrategy::save(const IClient *client, const Job &job)
 {
     m_pending.job  = job;
-    m_pending.host = client->host();
-    m_pending.port = client->port();
+    m_pending.host = client->pool().host();
+    m_pending.port = client->pool().port();
 }
 
 
@@ -142,11 +136,6 @@ void xmrig::DonateStrategy::tick(uint64_t now)
     m_ticks++;
 
     if (m_ticks == m_target) {
-        if (kFreeThreshold > 0 && Counters::miners() < kFreeThreshold) {
-            m_target += 600;
-            return;
-        }
-
         m_pending.job.reset();
         m_client->connect();
     }
@@ -157,7 +146,7 @@ void xmrig::DonateStrategy::tick(uint64_t now)
 }
 
 
-void xmrig::DonateStrategy::onClose(Client *, int)
+void xmrig::DonateStrategy::onClose(IClient *, int)
 {
     if (!isActive()) {
         return;
@@ -168,7 +157,7 @@ void xmrig::DonateStrategy::onClose(Client *, int)
 }
 
 
-void xmrig::DonateStrategy::onJobReceived(Client *client, const Job &job)
+void xmrig::DonateStrategy::onJobReceived(IClient *client, const Job &job, const rapidjson::Value &)
 {
     if (!isActive()) {
         m_active = true;
@@ -179,12 +168,30 @@ void xmrig::DonateStrategy::onJobReceived(Client *client, const Job &job)
 }
 
 
-void xmrig::DonateStrategy::onLoginSuccess(Client *)
+void xmrig::DonateStrategy::onLogin(IClient *, rapidjson::Document &doc, rapidjson::Value &params)
+{
+    using namespace rapidjson;
+    auto &allocator = doc.GetAllocator();
+
+    Value algo(kArrayType);
+    algo.PushBack(m_client->pool().algorithm().toJSON(), allocator);
+
+    params.AddMember("algo", algo, allocator);
+}
+
+
+void xmrig::DonateStrategy::onLoginSuccess(IClient *)
 {
 }
 
 
-void xmrig::DonateStrategy::onResultAccepted(Client *client, const SubmitResult &result, const char *error)
+void xmrig::DonateStrategy::onResultAccepted(IClient *client, const SubmitResult &result, const char *error)
 {
     m_listener->onResultAccepted(this, client, result, error);
+}
+
+
+void xmrig::DonateStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
+{
+
 }
