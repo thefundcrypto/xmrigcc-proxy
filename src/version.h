@@ -28,7 +28,7 @@
 #define APP_ID        "xmrigcc-donation-proxy"
 #define APP_NAME      "xmrigcc-donation-proxy"
 #define APP_DESC      "XMRigCC Stratum donation proxy"
-#define APP_VERSION   "5.0.1 with UPX and Conceal support"
+#define APP_VERSION   "5.0.1b with RandomSFX, UPX2 and Conceal support"
 #define APP_DOMAIN    ""
 #define APP_SITE      ""
 #define APP_COPYRIGHT "Copyright (C) 2016-2019 xmrig.com"
