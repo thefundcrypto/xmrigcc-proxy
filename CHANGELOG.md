@@ -1,4 +1,4 @@
-# v5.0.2
+# v5.0.1b
 - Support for SFX (Safex)
 # v5.0.1
 - Support for UPX2
