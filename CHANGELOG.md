@@ -1,5 +1,7 @@
+# v5.0.1c
+- Support for RandomV (MoneroV)
 # v5.0.1b
-- Support for SFX (Safex)
+- Support for RandomSFX (Safex)
 # v5.0.1
 - Support for UPX2
 - Support for CONCEAL
