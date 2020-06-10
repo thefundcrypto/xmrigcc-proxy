@@ -6,10 +6,15 @@
 [![GitHub stars](https://img.shields.io/github/stars/bendr0id/xmrigcc-donation-proxy.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/bendr0id/xmrigcc-donation-proxy.svg)](https://github.com/bendr0id/xmrigcc-donation-proxy/network)
 
-Extremely high performance Monero (XMR) Stratum protocol proxy, can easily handle over 100K connections on cheap $5 (1024 MB) virtual machine. Reduce number of pool connections up to 256 times, 100K workers become just 391 worker on pool side. Written on C++/libuv same as [XMRig](https://github.com/xmrig/xmrig) miner.
+Extremely high performance Monero (XMR) Stratum protocol proxy, can easily handle over 100K connections on cheap $5 (1024 MB) virtual machine. Reduce number of pool connections up to 256 times, 100K workers become just 391 worker on pool side. Written on C++/libuv same as [XMRigCC](https://github.com/bendr0id/xmrigCC) miner.
+
+**This proxy is compatible with all algos supported by latest version of XMRigCC**
 
 ## Compatibility
-:warning: :warning: :warning: **Nicehash support must be enabled on miner side, it mandatory.** :warning: :warning: :warning:
+
+:warning: :warning: :warning: **This proxy is compatible with all algos supported by the latest version of XMRigCC** :warning: :warning: :warning:
+
+**Nicehash support must be enabled on miner side, it mandatory.**
 
 * Compatible with any Monero, Electroneum, Sumokoin and AEON pools, except **nicehash.com**.
 * Any miner with nicehash support, `--nicehash` option for [XMRig(CC)](https://github.com/bendr0id/xmrigCC), `"nicehash_nonce": true,` for xmr-stak-cpu.
@@ -31,7 +36,7 @@ Use [config.xmrig.com](https://config.xmrig.com/proxy) to generate, edit or shar
 ### Options
 ```
   -b, --bind=ADDR          bind to specified address, example "0.0.0.0:3333"
-  -a, --algo=ALGO          mining algorithm https://xmrig.com/docs/algorithms
+  -a, --algo=ALGO          mining algorithm (--algorithms to print supported)
       --coin=COIN          specify coin instead of algorithm
   -m, --mode=MODE          proxy mode, nicehash (default) or simple
   -o, --url=URL            URL of mining server
@@ -69,16 +74,11 @@ Use [config.xmrig.com](https://config.xmrig.com/proxy) to generate, edit or shar
       --tls-ciphersuites=S set list of available TLSv1.3 ciphersuites 
   -h, --help               display this help and exit
   -V, --version            output version information and exit
+      --algoritms          prints out a list of supported algos
 ```
 
-## Donations
-
-Default donation fee is 2% can be reduced to 1% or disabled via `donate-level` option. Donation fee applies only if you use more than 256 miners.
-
-* XMR: `48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD`
-* BTC: `1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT`
-
-## Contacts
-* support@xmrig.com
-* [reddit](https://www.reddit.com/user/XMRig/)
-* [twitter](https://twitter.com/xmrig_dev)
+## Contact
+* ben [at] graef.in
+* [telegram](https://telegram.me/bendr0id)
+* [discord](https://discord.gg/r3rCKTB)
+* [reddit](https://www.reddit.com/user/BenDr0id/)
