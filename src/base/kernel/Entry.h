@@ -40,7 +40,8 @@ public:
         Usage,
         Version,
         Topo,
-        Platforms
+        Platforms,
+	Algorithms
     };
 
     static Id get(const Process &process);

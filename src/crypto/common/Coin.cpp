@@ -50,7 +50,10 @@ static CoinName const coin_names[] = {
     { "monero",     Coin::MONERO },
     { "xmr",        Coin::MONERO },
     { "arqma",      Coin::ARQMA  },
-    { "arq",        Coin::ARQMA  }
+    { "arq",        Coin::ARQMA  },
+    { "dero",       Coin::DERO   },
+    { "keva",       Coin::KEVA   },
+    { "pengo",      Coin::PENGO  }
 };
 
 
@@ -66,6 +69,15 @@ xmrig::Algorithm::Id xmrig::Coin::algorithm(uint8_t blobVersion) const
 
     case ARQMA:
         return (blobVersion >= 15) ? Algorithm::RX_ARQ : Algorithm::CN_PICO_0;
+
+    case DERO:
+        return (blobVersion >= 4) ? Algorithm::ASTROBWT_DERO : Algorithm::CN_0;
+
+    case KEVA:
+        return (blobVersion >= 11) ? Algorithm::RX_KEVA : Algorithm::CN_R;
+
+    case PENGO:
+        return (blobVersion >= 5) ? Algorithm::AR2_CHUKWA_LITE : Algorithm::CN_PICO_0;
 
     case INVALID:
         break;

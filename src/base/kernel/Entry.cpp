@@ -42,6 +42,7 @@
 
 #include "base/kernel/Entry.h"
 #include "base/kernel/Process.h"
+#include "crypto/common/Algorithm.h"
 #include "core/config/usage.h"
 #include "version.h"
 
@@ -126,6 +127,18 @@ static int exportTopology(const Process &process)
 }
 #endif
 
+static int printAlgorithms()
+{
+    printf("Supported algorithms:\n\n");
+    
+    for (int id = Algorithm::CN_0; id <Algorithm::Id::MAX; id++)
+    {
+        Algorithm algo(static_cast<Algorithm::Id>(id));
+        printf ("\t%s\n", algo.name());
+    }
+
+    return 0;
+}
 
 } // namespace xmrig
 
@@ -139,6 +152,10 @@ xmrig::Entry::Id xmrig::Entry::get(const Process &process)
 
     if (args.hasArg("-V") || args.hasArg("--version")) {
          return Version;
+    }
+
+    if (args.hasArg("--algorithms")) {
+         return Algorithms;
     }
 
 #   ifdef XMRIG_FEATURE_HWLOC
@@ -166,6 +183,9 @@ int xmrig::Entry::exec(const Process &process, Id id)
 
     case Version:
         return showVersion();
+
+    case Algorithms:
+	return printAlgorithms();
 
 #   ifdef XMRIG_FEATURE_HWLOC
     case Topo:
