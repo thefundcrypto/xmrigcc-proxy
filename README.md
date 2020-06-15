@@ -1,5 +1,6 @@
 # XMRig Proxy
 [![Github All Releases](https://img.shields.io/github/downloads/bendr0id/xmrigcc-proxy/total.svg)](https://github.com/bendr0id/xmrigcc-proxy/releases)
+[![Github Latest](https://img.shields.io/github/downloads/bendr0id/xmrigCC-proxy/latest/total.svg)](https://github.com/bendr0id/xmrigcc-proxy/releases)
 [![GitHub release](https://img.shields.io/github/release/bendr0id/xmrigcc-proxy/all.svg)](https://github.com/bendr0id/xmrigcc-proxy/releases)
 [![GitHub Release Date](https://img.shields.io/github/release-date-pre/bendr0id/xmrigcc-proxy.svg)](https://github.com/bendr0id/xmrigcc-proxy/releases)
 [![GitHub license](https://img.shields.io/github/license/bendr0id/xmrigcc-proxy.svg)](https://github.com/bendr0id/xmrigcc-proxy/blob/master/LICENSE)
