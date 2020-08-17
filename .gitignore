@@ -1,2 +1,4 @@
+.idea/
 /build
+CMakeFiles/
 /CMakeLists.txt.user

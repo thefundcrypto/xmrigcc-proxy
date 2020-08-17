@@ -25,17 +25,17 @@
 #ifndef XMRIG_VERSION_H
 #define XMRIG_VERSION_H
 
-#define APP_ID        "xmrigcc-donation-proxy"
-#define APP_NAME      "xmrigcc-donation-proxy"
-#define APP_DESC      "XMRigCC Stratum donation proxy"
-#define APP_VERSION   "2.7.0 compatible with ALL XMRigCC 2.7.0 supported algos"
+#define APP_ID        "xmrigcc-proxy"
+#define APP_NAME      "xmrigcc-proxy"
+#define APP_DESC      "XMRigCC Stratum proxy"
+#define APP_VERSION   "2.8.0 compatible with ALL XMRigCC 2.8.0 supported algos"
 #define APP_DOMAIN    ""
 #define APP_SITE      ""
-#define APP_COPYRIGHT "Copyright (C) 2016-2019 xmrig.com"
+#define APP_COPYRIGHT ""
 #define APP_KIND      "proxy"
 
 #define APP_VER_MAJOR  2
-#define APP_VER_MINOR  7
+#define APP_VER_MINOR  8
 #define APP_VER_PATCH  0
 
 #ifdef _MSC_VER
