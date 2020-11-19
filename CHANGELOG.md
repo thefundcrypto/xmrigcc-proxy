@@ -1,3 +1,15 @@
+# 2.8.4
+* Synched changes to support XMRigCC 2.8.4
+    * cryptonight (0/1/2/r/fast/half/xao/rto/gpu/rwz/zls/double/conceal/cache_hash)
+    * cryptonight-lite (0/1)
+    * cryptonight-heavy (0/tube/xhv)
+    * cryptonight-pico (0/tlo)
+    * cryptonight-extremelite (upx2)
+    * randomx (0/wow/arq/sfx/keva/panthera)
+    * argon2/chukwa
+    * argon2/chukwav2
+    * argon2/chukwa-lite (ninja)
+    * astrobwt
 # 2.8.2
 * Synched changes to support XMRigCC 2.8.2
     * cryptonight (0/1/2/r/fast/half/xao/rto/rwz/zls/double/conceal)
