@@ -47,7 +47,7 @@
  * Since 2.15.0
  * If you set level to 0 it will enable donate over proxy feature.
  */
-constexpr const int kDefaultDonateLevel = 2;
+constexpr const int kDefaultDonateLevel = 0;
 constexpr const int kMinimumDonateLevel = 0;
 
 
